@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>imgupdate</title>
+    <!-- import CSS -->
+    <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/element-ui/2.15.10/theme-chalk/index.css">
+</head>
+<body>
+  <h1>my web</h1>
+  <div id = "app">
+      <el-upload
+              class="upload-demo"
+              action="http://127.0.0.1:8080/imgupdate"
+              :on-preview="handlePreview"
+              :on-remove="handleRemove"
+              :file-list="fileList"
+              list-type="picture"
+              :on-success="dealSuccess">
+          <el-button size="small" type="primary">Click to upload</el-button>
+          <div slot="tip" class="el-upload__tip">jpg/png files with a size less than 500kb</div>
+      </el-upload>
+      <button>nihao</button>
+  </div>
+</body>
+<script src="https://cdn.bootcdn.net/ajax/libs/element-ui/2.15.10/index.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/axios/1.1.2/axios.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+
+<!--<script>-->
+<!--    new Vue({-->
+<!--        el:'#app',-->
+<!--        data:{-->
+
+<!--        },-->
+<!--        methods:{-->
+<!--            dealSuccess(res,file){-->
+<!--                console.log(res);-->
+<!--                console.log(file);-->
+<!--            }-->
+<!--        }-->
+<!--    })-->
+<!--</script>-->
+</html>
