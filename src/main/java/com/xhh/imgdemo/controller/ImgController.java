@@ -1,6 +1,7 @@
 package com.xhh.imgdemo.controller;
 
 import com.drew.imaging.ImageProcessingException;
+import com.xhh.imgdemo.entity.ImgEntity;
 import com.xhh.imgdemo.req.ImgSaveReq;
 import com.xhh.imgdemo.req.SysUserSaveReq;
 import com.xhh.imgdemo.resp.CommonResp;
@@ -45,4 +46,31 @@ public class ImgController {
         return resp;
 
     }
+
+    /**
+     * 通过图片位置信息进行模糊查询
+     * @param location
+     * @return
+     */
+    @PostMapping("imgqurey")
+    public List<ImgEntity> imgQueryByLocation(@RequestParam("location") String location){
+        return imgService.testQuerymohu(location);
+    }
+
+    /**
+     * 通过图片id进行删除操作
+     * @param id
+     * @return
+     */
+    @PostMapping("imgdelete")
+    public CommonResp imgDeleteById(@RequestParam("id") Long id){
+        imgService.imgDelete(id);
+        CommonResp resp = new CommonResp<>();
+        return resp;
+    }
+
+
+
+
+
 }
