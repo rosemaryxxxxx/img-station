@@ -46,7 +46,6 @@ public class ImgController {
             //将上传的图片再上传到FASTDFS图片服务器
             StorePath storePath = fastdfsUtils.upload(mfile);
             String fullPath = storePath.getFullPath();
-
             //将mutipartfile转换成file
             File f = imgUtils.MultipartFileToFile(mfile);
             ImgSaveReq req = new ImgSaveReq();
@@ -55,6 +54,7 @@ public class ImgController {
             req.setTime(imgUtils.getImgTime(f));
             req.setLocation(imgUtils.getImgLocation(f));
             req.setUrl(serverIP+":"+nignxPort+"/"+fullPath);
+            //上传图片到MySQL数据库
             imgService.imgUpload(req);
         }
 
@@ -86,6 +86,7 @@ public class ImgController {
         fastdfsUtils.delete(url);
         //删除mysql数据库中的图片信息
         imgService.imgDelete(id);
+
         CommonResp resp = new CommonResp<>();
         return resp;
     }

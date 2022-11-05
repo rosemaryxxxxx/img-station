@@ -117,6 +117,9 @@ public class imgUtils {
         String apiKey = "98BTkroQl0ttEO1hgkrP3HZj4DM46gil";
         String loc = "";
         String res = "";
+        if(gps_latitude!=0&&gps_longitude!=0){
+
+        }
         String url = "https://api.map.baidu.com/reverse_geocoding/v3/?ak=" + apiKey + "&output=json&coordtype=wgs84ll&location=" + gps_latitude + "," + gps_longitude;
         System.err.println("【url】" + url);
 
@@ -170,16 +173,24 @@ public class imgUtils {
     public static String getImgTime(File file) throws ImageProcessingException, IOException {
         Metadata metadata = ImageMetadataReader.readMetadata(file);
         String desc = null;
+        String taketime = null;
         for (Directory directory : metadata.getDirectories()) {
             for (Tag tag : directory.getTags()) {
                 String tagName = tag.getTagName();  //标签名
                 desc = tag.getDescription();
+
                 if (tagName.equals("Date/Time Original")) {
                     System.out.println("拍摄时间: " + desc);
+                    taketime = desc;
                 }
             }
         }
-        return desc;
+        //考虑有一些图片没有时间信息
+        if(taketime==null){
+            return "";
+        }else {
+            return taketime;
+        }
     }
 
     /**
@@ -205,11 +216,17 @@ public class imgUtils {
                 }
             }
         }
-        return convertGpsToLoaction(lat,lng);
+        //考虑有一些图片没有位置信息
+        if (lat==null||lng==null){
+            return "";
+        }else {
+            return convertGpsToLoaction(lat, lng);
+        }
     }
 
     /**
-     * 获取图片存储路径，这里只做本地上的操作，以后可以用图片服务器
+     * 获取图片存储路径，这里只做本地上的操作，以后可以用图片服务器,
+     * 已弃用
      * @param file
      * @return
      */

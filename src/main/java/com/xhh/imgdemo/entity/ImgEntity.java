@@ -11,7 +11,7 @@ public class ImgEntity {
 
     private String location;
 
-    private String time;
+    private String taketime;
 
     private String url;
 
@@ -33,11 +33,11 @@ public class ImgEntity {
     }
 
     public String getTime() {
-        return time;
+        return taketime;
     }
 
-    public void setTime(String time) {
-        this.time = time;
+    public void setTime(String taketime) {
+        this.taketime = taketime;
     }
 
     public String getUrl() {
@@ -52,7 +52,7 @@ public class ImgEntity {
         return "ImgEntity{" +
                 "id=" + id +
                 ", location='" + location + '\'' +
-                ", time='" + time + '\'' +
+                ", taketime='" + taketime + '\'' +
                 ", url='" + url + '\'' +
                 '}';
     }
