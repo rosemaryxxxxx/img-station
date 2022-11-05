@@ -40,3 +40,6 @@ fdfs:
     height: 150       # ??????
     width: 150
 
+nignx:
+  ip: 10.236.14.7
+  port: 8888

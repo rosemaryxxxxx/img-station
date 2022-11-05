@@ -9,6 +9,9 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+/**
+ * 用于测试fastdfs，后期将把功能集成到图片操作中
+ */
 @RestController
 @RequestMapping("/fastdfsUtils")
 public class FdfsController {
@@ -25,8 +28,13 @@ public class FdfsController {
             return fullPath;
         }
 
-        @DeleteMapping("/delete")
+    /**
+     * 格式如：fileUrl = "group1/M00/00/00/CuwOB2NlLH6AcJJeAABwAlnX-bs07.jpeg";
+     * @param fileUrl
+     */
+    @DeleteMapping("/delete")
         public void delete(String fileUrl) {
+//            fileUrl = "group1/M00/00/00/CuwOB2NlLH6AcJJeAABwAlnX-bs07.jpeg";
             fastdfsUtils.delete(fileUrl);
         }
 

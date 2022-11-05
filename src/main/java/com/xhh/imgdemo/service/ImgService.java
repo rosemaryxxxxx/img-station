@@ -11,4 +11,6 @@ public interface ImgService {
     List<ImgEntity> testQuerymohu(String location);
 
     void imgDelete(Long id);
+
+    ImgEntity queryById(Long id);
 }

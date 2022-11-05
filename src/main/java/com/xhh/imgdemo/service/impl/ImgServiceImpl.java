@@ -45,6 +45,10 @@ public class ImgServiceImpl extends ServiceImpl<ImgMapper, ImgEntity> implements
     public void imgDelete(Long id) {
         imgMapper.deleteById(id);
     }
+    @Override
+    public ImgEntity queryById(Long id){
+        return imgMapper.selectById(id);
+    }
 
 
 }
